@@ -7,9 +7,10 @@
 #define IDA_BASE            0x100000000
 #define ADDR_IS_PREMIUM     0x10009CD24  // Address of "isPremiumActive" in IDA (adjust if needed)
 
-static int (*orig_isPremiumActive)();
-static int hook_isPremiumActive() { 
-	return 1; 
+static int (*orig_isPremiumActive)(void);
+
+static int hook_isPremiumActive(void) {
+    return 1;
 }
 
 %ctor {
@@ -17,9 +18,9 @@ static int hook_isPremiumActive() {
         const char *name = _dyld_get_image_name(i);
         if (name && strstr(name, TARGET_MODULE)) {
             uintptr_t base = (uintptr_t)_dyld_get_image_header(i);
-			uintptr_t addr = base + (ADDR_IS_PREMIUM - IDA_BASE);
+            uintptr_t addr = base + (ADDR_IS_PREMIUM - IDA_BASE);
             MSHookFunction((void *)addr, (void *)hook_isPremiumActive, (void **)&orig_isPremiumActive);
-			NSLog(@"[ServerCatPremium] Hooked isPremiumActive at 0x%lx", addr);
+            NSLog(@"[ServerCatPremium] Hooked isPremiumActive at 0x%lx", addr);
             return;
         }
     }
@@ -27,13 +28,13 @@ static int hook_isPremiumActive() {
 
 // iOS 16 Crash Fix
 %hook CKContainer
+
 + (id)defaultContainer {
     return nil;
 }
 
-+ (id)containerWithIdentifier:(id)arg1 {
-    arg1 = nil;
++ (id)containerWithIdentifier:(id)__unused arg1 {
     return nil;
-    return %orig;
 }
+
 %end
