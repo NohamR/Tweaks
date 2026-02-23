@@ -1,0 +1,9 @@
+Package: xyz.nohamr
+Name: ServerCatPremium (Legacy)
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Unlocks premium features in ServerCat app.
+Maintainer: NohamR
+Author: NohamR
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)
