@@ -28,13 +28,10 @@ static int hook_isPremiumActive(void) {
 
 // iOS 16 Crash Fix
 %hook CKContainer
-
 + (id)defaultContainer {
     return nil;
 }
-
-+ (id)containerWithIdentifier:(id)__unused arg1 {
++ (id)containerWithIdentifier:(id) arg1 {
     return nil;
 }
-
 %end

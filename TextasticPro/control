@@ -1,0 +1,9 @@
+Package: xyz.nohamr.textasticpro
+Name: TextasticPro
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Unlocks premium features in Textastic app.
+Maintainer: NohamR
+Author: NohamR
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)
