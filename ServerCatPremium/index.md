@@ -19,3 +19,7 @@ cyan -i tech.baye.servercat-1.30.0.ipa \
      -f xyz.nohamr_1.0.0-1_iphoneos-arm64.deb \
      -u
 ```
+
+## Screenshots
+![../docs/screens/ServerCatPremium/menu.png](../docs/screens/ServerCatPremium/menu.png)
+![../docs/screens/ServerCatPremium/menu2.png](../docs/screens/ServerCatPremium/menu2.png)
