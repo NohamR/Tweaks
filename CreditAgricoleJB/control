@@ -1,0 +1,9 @@
+Package: xyz.nohamr.creditagricolejb
+Name: CreditAgricoleJB (Rootless)
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Bypas jailbreak detection in Credit Agricole app
+Maintainer: NohamR
+Author: NohamR
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)

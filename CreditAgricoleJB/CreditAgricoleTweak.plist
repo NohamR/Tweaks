@@ -1,0 +1,7 @@
+{
+	Filter = {
+		Bundles = (
+			"fr.creditagricole.monbudget",
+		);
+	};
+}

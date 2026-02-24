@@ -1,6 +1,6 @@
 # BusinessJB
 
-Disables jailbreak detection in La Banque Postale by forcing `JailbreakDetection\n- (bool)jailbroken` to return `FALSE`.
+Disables jailbreak detection in La Banque Postale by forcing `JailbreakDetection` to return `FALSE`.
 
 - **App**: [Business – La Banque Postale](https://apps.apple.com/fr/app/business-la-banque-postale/id1438089314)
 - **Latest version**: 2.3.000
