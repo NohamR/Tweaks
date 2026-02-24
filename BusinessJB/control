@@ -1,0 +1,9 @@
+Package: xyz.nohamr.businessjb
+Name: BusinessJB
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Bypass the jailbreak detection of the Business app.
+Maintainer: NohamR
+Author: NohamR
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)

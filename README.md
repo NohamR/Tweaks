@@ -9,6 +9,7 @@ iOS tweaks built with [Theos](https://theos.dev), injected into IPAs via [cyan](
 | [ServerCatPremium](ServerCatPremium/index.md)           | ServerCat 1.30.0 | iOS 17+ |
 | [ServerCatPremium (legacy)](ServerCatPremium_/index.md) | ServerCat 1.6.4  | iOS 15  |
 | [TextasticPro](TextasticPro/index.md)                   | Textastic 10.9.2 | iOS 18+ |
+| [BusinessJB](BusinessJB/index.md)                       | Business 2.3.000 | iOS 15  |
 
 ## Build
 
