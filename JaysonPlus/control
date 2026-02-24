@@ -1,0 +1,9 @@
+Package: xyz.nohamr.jaysonplus
+Name: JaysonPlus
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Unlocks everything in the Jayson app.
+Maintainer: NohamR
+Author: NohamR
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)
