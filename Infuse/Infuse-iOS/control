@@ -1,0 +1,10 @@
+Package: io.infuseteam.infuserootless
+Name: Infuse (Rootless)
+Version: 2.0
+Architecture: iphoneos-arm
+Description: Unlock the full potential of Infuse
+Maintainer: Infuse Team
+Author: Infuse Team
+Section: Tweaks
+Depends: firmware (>= 18.3)
+Conflicts: io.infuseteam.infuse, io.infuseteam.infuseroothide, io.infuseteam.infuselegacy, xyz.eshaydev.ignition, com.ippteam.infuse, com.strejda603.infuse6pro, xyz.eshaydev.infuse

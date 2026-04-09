@@ -11,6 +11,8 @@ iOS tweaks built with [Theos](https://theos.dev), injected into IPAs via [cyan](
 | [TextasticPro](TextasticPro/index.md)                   | Textastic 10.9.2 | iOS 18+    |
 | [BusinessJB](BusinessJB/index.md)                       | Business 2.3.000 | iOS 15     |
 | [CreditAgricoleJB](CreditAgricoleJB/index.md)           | Ma Banque 47.0.0 | iOS 15.8.6 |
+| [Infuse](Infuse/Infuse-tvOS/index.md)                   | Infuse 8.2.4     | tvOS 18.3  |
+| [Infuse (iOS)](Infuse/Infuse-iOS/index.md)              | Infuse 8.4.2     | iOS 18+    |
 
 ## Build
 
