@@ -1,0 +1,9 @@
+Package: xyz.nohamr.tf1plus
+Name: TF1+ (iOS)
+Version: 1.0
+Architecture: iphoneos-arm64
+Description: TF1+ Ads blocker hook for iOS
+Maintainer: NohamR
+Author: NohamR
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)
