@@ -1,11 +1,9 @@
 name: Build Tweak
 on:
-  push:
-    branches: [ "main" ]
   workflow_dispatch:
     inputs:
       tweak:
-        description: 'Tweak folder to build (e.g., BusinessJB, CreditAgricoleJB, Infuse-iOS)'
+        description: 'Tweak folder to build (e.g., BusinessJB, CreditAgricoleJB, Infuse-iOS, TF1Plus/TF1Plus-tvOS)'
         required: false
         default: 'BusinessJB'
       branch:
@@ -84,13 +82,24 @@ jobs:
 
       - name: Build Tweak
         run: |
-          TWEAK_NAME="${{ inputs.tweak || 'BusinessJB' }}"
-          cd "$TWEAK_NAME"
+          TWEAK_PATH="${{ inputs.tweak || 'BusinessJB' }}"
+          TWEAK_NAME=$(basename "$TWEAK_PATH")
+          
+          cd "$TWEAK_PATH"
           echo "TWEAK_VERSION=$(grep '^Version:' control | cut -d ' ' -f2)" >> $GITHUB_ENV
           echo "TWEAK_NAME=$TWEAK_NAME" >> $GITHUB_ENV
-          make clean package DEBUG=0 FINALPACKAGE=1
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=roothide
+          
+          # Check if this is a tvOS tweak
+          if grep -q "TARGET.*appletv" Makefile; then
+            # tvOS tweaks don't use rootless/roothide schemes
+            make clean package DEBUG=0 FINALPACKAGE=1
+          else
+            # iOS tweaks build with multiple schemes
+            make clean package DEBUG=0 FINALPACKAGE=1
+            make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+            make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=roothide
+          fi
+          
           mv packages/*.deb ${{ github.workspace }}
 
       - name: Upload the tweak .deb(s)
