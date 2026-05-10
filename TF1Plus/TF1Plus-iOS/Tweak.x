@@ -5,3 +5,12 @@
     return self;
 }
 %end
+
+%hook VSSubscriptionRegistrationCenter
+- (void)setCurrentSubscription:(id)subscription
+{
+    NSLog(@"Blocked VSSubscriptionRegistrationCenter");
+    NSLog(@"Subscription: %@", subscription);
+    return;
+}
+%end

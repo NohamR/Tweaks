@@ -4,7 +4,7 @@
 			"com.tf1.applitf1",
 		);
 		Executables = (
-			mytf1,
+			App,
 		);
 	};
 }

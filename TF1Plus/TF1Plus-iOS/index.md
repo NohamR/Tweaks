@@ -3,7 +3,7 @@
 Block ads initialization on TF1+.
 
 - **App**: [TF1+ : Streaming, TV en Direct](https://apps.apple.com/fr/app/tf1-streaming-tv-en-direct/id407248490)
-- **Tested version**: 11.36.0
+- **Tested version**: 23.3.1
 - **Target**: iOS
 
 ## Build
