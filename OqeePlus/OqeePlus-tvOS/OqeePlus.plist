@@ -1,0 +1,10 @@
+{
+	Filter = {
+		Bundles = (
+			"net.oqee.appleos",
+		);
+		Executables = (
+			App,
+		);
+	};
+}
