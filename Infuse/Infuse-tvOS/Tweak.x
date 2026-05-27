@@ -56,17 +56,33 @@
 %end
 
 // Add credits
-@interface FCVersionView : UIView
-@property (nonatomic, strong) UILabel *label;
+@interface FCTVSettingsController : UITableViewController
+- (UITableView *)tableView;
 @end
 
-%hook FCVersionView
-- (void)awakeFromNib {
+%hook FCTVSettingsController
+- (void)setUpAppVersionLabel {
     %orig;
-    UILabel *label = (UILabel *)[self valueForKey:@"label"];
-    if ([label.text containsString:@"Infuse Pro"] && ![label.text hasPrefix:@"Infuse Team •"]) {
-        label.text = [NSString stringWithFormat:@"Infuse Team • %@", label.text];
-    }
+
+    UITableView *tv = [self tableView];
+    UILabel *footer = (UILabel *)tv.tableFooterView;
+
+    // Guard: footer is nil/not a UILabel
+    if (![footer isKindOfClass:[UILabel class]]) return;
+
+    NSAttributedString *current = footer.attributedText;
+    if (!current.length) return;
+
+    // Handles repeated calls
+    if ([current.string hasPrefix:@"Infuse Team  •"]) return;
+
+    NSDictionary *attrs = [current attributesAtIndex:0 effectiveRange:nil];
+    NSMutableAttributedString *mas = [current mutableCopy];
+    NSAttributedString *prefix = [[NSAttributedString alloc]
+        initWithString:@"Infuse Team  • "
+            attributes:attrs];
+    [mas insertAttributedString:prefix atIndex:0];
+    footer.attributedText = mas;
 }
 %end
 
