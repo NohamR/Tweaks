@@ -1,10 +1,7 @@
 {
 	Filter = {
-		Bundles = (
-			"com.firecore.infuse",
-		);
 		Executables = (
-			"infuse",
+			infuse,
 		);
 	};
 }

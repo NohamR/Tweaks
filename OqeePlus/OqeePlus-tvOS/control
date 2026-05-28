@@ -1,6 +1,6 @@
 Package: xyz.nohamr.oqeeplus
 Name: Oqee+ (tvOS)
-Version: 1.0
+Version: 1.1
 Architecture: appletvos-arm64
 Description: Oqee+ Ads blocker hook for tvOS
 Maintainer: NohamR

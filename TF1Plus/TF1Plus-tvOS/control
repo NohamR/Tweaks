@@ -1,6 +1,6 @@
 Package: xyz.nohamr.tf1plus
-Name: TF1+ (Rootless)
-Version: 1.0
+Name: TF1+ (Rootful)
+Version: 1.1
 Architecture: appletvos-arm64
 Description: TF1+ Ads blocker hook
 Maintainer: NohamR
