@@ -28,6 +28,14 @@ jobs:
         with:
           ref: ${{ inputs.branch || github.ref }}
 
+      - name: Cache Homebrew packages
+        uses: actions/cache@v4
+        with:
+          path: ~/Library/Caches/Homebrew
+          key: brew-${{ runner.os }}-make-ldid
+          restore-keys: |
+            brew-${{ runner.os }}-
+
       - name: Install dependencies
         run: brew install make ldid
 
@@ -36,8 +44,7 @@ jobs:
           echo "$(brew --prefix make)/libexec/gnubin" >> $GITHUB_PATH
           echo "THEOS=${{ github.workspace }}/theos" >> $GITHUB_ENV
 
-      # Original from YTweaks
-      - name: Get Theos commit
+      - name: Get Theos and dependencies commit
         run: |
           get_commit_hash() {
             local repo_url=$1
@@ -51,13 +58,18 @@ jobs:
           fi
           echo "THEOS_REPO=$THEOS_URL" >> $GITHUB_ENV
           echo "THEOS_COMMIT=$(get_commit_hash "$THEOS_URL")" >> $GITHUB_ENV
+          echo "PSHEADER_COMMIT=$(get_commit_hash "https://github.com/PoomSmart/PSHeader.git")" >> $GITHUB_ENV
+          echo "SDK_COMMIT=$(get_commit_hash "https://github.com/Tonwalter888/iOS-SDKs.git")" >> $GITHUB_ENV
 
       - name: Cache Theos
         id: cache-theos
-        uses: actions/cache@v5
+        uses: actions/cache@v4
         with:
           path: theos
-          key: Tweak-18.6-SDK-${{ env.THEOS_COMMIT }}
+          key: Theos-${{ env.THEOS_COMMIT }}-SDK-${{ env.SDK_COMMIT }}-PSHeader-${{ env.PSHEADER_COMMIT }}
+          restore-keys: |
+            Theos-${{ env.THEOS_COMMIT }}-SDK-${{ env.SDK_COMMIT }}-
+            Theos-${{ env.THEOS_COMMIT }}-
 
       - name: Setup Theos
         if: ${{ steps.cache-theos.outputs.cache-hit != 'true' }}
@@ -68,16 +80,8 @@ jobs:
             git sparse-checkout set --no-cone iPhoneOS18.6.sdk
             git checkout --quiet
             mv *.sdk "$THEOS/sdks"
-            
-      - name: Clone headers
-        run: |
-          if [ ! -d "$THEOS/include/PSHeader" ]; then
-            git clone --quiet --depth=1 https://github.com/PoomSmart/PSHeader.git "$THEOS/include/PSHeader"
-          else
-            cd $THEOS/include/PSHeader
-            git pull --quiet --force
             cd ${{ github.workspace }}
-          fi
+            git clone --quiet --depth=1 https://github.com/PoomSmart/PSHeader.git "$THEOS/include/PSHeader"
 
       - name: Build Tweak
         run: |
