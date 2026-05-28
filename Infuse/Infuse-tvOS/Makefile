@@ -1,5 +1,5 @@
 TARGET = appletv:latest:18.3
-ARCHS = arm64
+ARCHS = arm64 arm64e
 INSTALL_TARGET_PROCESSES = infuse
 THEOS_PACKAGE_SCHEME = rootless
 

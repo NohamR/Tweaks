@@ -3,5 +3,8 @@
 		Bundles = (
 			"com.firecore.infuse",
 		);
+		Executables = (
+			"infuse",
+		);
 	};
 }
