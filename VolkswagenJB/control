@@ -1,0 +1,9 @@
+Package: xyz.nohamr.volkswagenjb
+Name: VolkswagenJB (Rootless)
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Bypass jailbreak detection in Volkswagen app
+Maintainer: NohamR
+Author: NohamR
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)
