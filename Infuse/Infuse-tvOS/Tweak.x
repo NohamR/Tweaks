@@ -95,3 +95,41 @@
     return nil;
 }
 %end
+
+%hook NSPersistentCloudKitContainerOptions
+- (id)initWithContainerIdentifier:(id)arg1 {
+    return nil;
+}
+%end
+
+%hook CKRecordID
+- (id)initWithRecordName:(id)arg1 {
+    return nil;
+}
+- (id)initWithRecordName:(id)arg1 zoneID:(id)arg2 {
+    return nil;
+}
+%end
+
+%hook CKSystemSharingUIObserver
+- (id)initWithContainer:(id)arg1 {
+    return nil;
+}
+%end
+
+%hook NSFileManager
+- (id)ubiquityIdentityToken {
+    return nil;
+}
+- (NSURL *)containerURLForSecurityApplicationGroupIdentifier:(NSString *)groupIdentifier {
+    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *path = [docPath stringByAppendingPathComponent:groupIdentifier];
+    NSURL *url = [NSURL fileURLWithPath:path];
+
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[url path]]) {
+        [[NSFileManager defaultManager] createDirectoryAtURL:url withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+
+    return url;
+}
+%end

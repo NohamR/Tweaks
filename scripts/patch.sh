@@ -42,31 +42,9 @@ echo "[+] Patching IPA with cyan..."
 cyan -i "$IPA" -o "$OUTPUT_IPA" -f "$DEB" -u --overwrite -c 9
 echo "[+] Patch complete."
 
-LOCAL_IP=$(ipconfig getifaddr en0 2>/dev/null)
-
-if [ -z "$LOCAL_IP" ]; then
-    LOCAL_IP=$(hostname -I 2>/dev/null | awk '{print $1}')
-fi
-
-if [ -z "$LOCAL_IP" ]; then
-    echo "Could not detect local IP automatically."
-    LOCAL_IP="YOUR_IP"
-fi
-
-DOWNLOAD_LINK="http://$LOCAL_IP:8000/$IPA_NAME"
-
-cd "$OUT_DIR"
-
-echo ""
-echo "=========================================="
-echo "Download link:"
-echo "$DOWNLOAD_LINK"
-echo "=========================================="
-echo ""
-echo -n "$DOWNLOAD_LINK" | pbcopy
-echo "[+] Download link copied to clipboard."
-echo "[+] Starting HTTP server..."
-echo "Press Ctrl+C to stop."
-echo ""
-
-python3 -m http.server 8000
+# Copy patched IPA next to the original with _patched suffix
+ORIG_DIR=$(dirname "$IPA")
+ORIG_BASENAME=$(basename "$IPA" .ipa)
+PATCHED_IPA="$ORIG_DIR/${ORIG_BASENAME}_patched.ipa"
+cp "$OUTPUT_IPA" "$PATCHED_IPA"
+echo "[+] Patched IPA saved as: $PATCHED_IPA"
