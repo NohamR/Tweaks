@@ -1,0 +1,9 @@
+Package: com.rev.gpxviewer2unlock
+Name: GPXViewer2 Unlock
+Version: 1.0
+Architecture: iphoneos-arm
+Description: Unlock all IAP products and easter egg in GPXViewer 2
+Maintainer: rev
+Author: rev
+Section: Tweaks
+Depends: firmware (>= 14.0)
