@@ -5,7 +5,16 @@
 
 #define TARGET_MODULE       "ServerCat"
 #define IDA_BASE            0x100000000
-#define ADDR_IS_PREMIUM     0x10009CD24  // Address of "isPremiumActive" in IDA (adjust if needed)
+
+/*
+ * EDIT THE HOOK ADDRESS OFFSET ACCORDING TO THE APP VERSION USED:
+ *
+ * ServerCat 1.30.0 (latest)  -> 0x10009CD24
+ * ServerCat 1.6.4  (legacy)  -> 0x100454D70
+ *
+ * Find the address of `isPremiumActive` in IDA and set it below.
+ */
+#define ADDR_IS_PREMIUM     0x10009CD24
 
 static int (*orig_isPremiumActive)(void);
 
@@ -26,7 +35,7 @@ static int hook_isPremiumActive(void) {
     }
 }
 
-// iOS 16 Crash Fix
+// iOS 16+ Crash Fix
 %hook CKContainer
 + (id)defaultContainer {
     return nil;
