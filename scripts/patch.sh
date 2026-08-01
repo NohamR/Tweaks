@@ -2,25 +2,48 @@
 
 set -e
 
-if [ "$#" -ne 2 ]; then
-    echo "Usage: $0 <file.ipa> <file.deb>"
+usage() {
+    echo "Usage: $0 [--tv] [-o <output.ipa> | --output <output.ipa>] <file.ipa> <file.deb>"
     exit 1
-fi
+}
 
+TV=0
 IPA=""
 DEB=""
+OUTPUT_IPA=""
+OUTPUT_SPECIFIED=0
 
-for arg in "$@"; do
-    case "$arg" in
+while [ "$#" -gt 0 ]; do
+    case "$1" in
+        -o|--output)
+            if [ -z "$2" ]; then
+                echo "Error: $1 requires an argument."
+                exit 1
+            fi
+            OUTPUT_IPA="$2"
+            OUTPUT_SPECIFIED=1
+            shift 2
+            ;;
+        -o=*|--output=*)
+            OUTPUT_IPA="${1#*=}"
+            OUTPUT_SPECIFIED=1
+            shift
+            ;;
+        --tv)
+            TV=1
+            shift
+            ;;
         *.ipa)
-            IPA="$arg"
+            IPA="$1"
+            shift
             ;;
         *.deb)
-            DEB="$arg"
+            DEB="$1"
+            shift
             ;;
         *)
-            echo "Unknown file type: $arg"
-            exit 1
+            echo "Unknown argument: $1"
+            usage
             ;;
     esac
 done
@@ -30,21 +53,22 @@ if [ -z "$IPA" ] || [ -z "$DEB" ]; then
     exit 1
 fi
 
-# ---- Prepare output folder ----
-OUT_DIR="/tmp/ipa_patched"
-mkdir -p "$OUT_DIR"
+if [ -z "$OUTPUT_IPA" ]; then
+    OUTPUT_IPA="/tmp/ipa_patched/$(basename "$IPA")"
+    mkdir -p "$(dirname "$OUTPUT_IPA")"
+fi
 
-IPA_NAME=$(basename "$IPA")
-OUTPUT_IPA="$OUT_DIR/$IPA_NAME"
+CYAN_ARGS=(-i "$IPA" -o "$OUTPUT_IPA" -f "$DEB" -u --overwrite -c 9)
+if [ "$TV" -eq 1 ]; then
+    CYAN_ARGS+=(--tv)
+fi
 
 echo "[+] Patching IPA with cyan..."
-# cyan -i "$IPA" -o "$OUTPUT_IPA" -f "$DEB" -u --overwrite -c 0
-cyan -i "$IPA" -o "$OUTPUT_IPA" -f "$DEB" -u --overwrite -c 9
+cyan "${CYAN_ARGS[@]}"
 echo "[+] Patch complete."
 
-# Copy patched IPA next to the original with _patched suffix
-ORIG_DIR=$(dirname "$IPA")
-ORIG_BASENAME=$(basename "$IPA" .ipa)
-PATCHED_IPA="$ORIG_DIR/${ORIG_BASENAME}_patched.ipa"
-cp "$OUTPUT_IPA" "$PATCHED_IPA"
-echo "[+] Patched IPA saved as: $PATCHED_IPA"
+if [ "$OUTPUT_SPECIFIED" -eq 0 ]; then
+    PATCHED_IPA="$(dirname "$IPA")/$(basename "$IPA" .ipa)_patched.ipa"
+    cp "$OUTPUT_IPA" "$PATCHED_IPA"
+    echo "[+] Patched IPA saved as: $PATCHED_IPA"
+fi
