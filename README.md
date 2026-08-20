@@ -19,6 +19,7 @@ iOS tweaks built with [Theos](https://theos.dev), injected into IPAs via [cyan](
 | [VolkswagenJB](VolkswagenJB/index.md)              | Volkswagen 2.72.0        | iOS 16.7.15 |
 | [GPXViewer2](GPXViewer2)                           | GPXViewer 2              | iOS 14+     |
 | [RMHook](RMHook/index.md)                          | reMarkable               | iOS         |
+| [HatchDragons](HatchDragons/index.md)              | HatchDragons 1.2.1       | iOS 18+     |
 
 ## Build
 
