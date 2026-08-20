@@ -1,0 +1,9 @@
+Package: xyz.nohamr.cloudquit
+Name: CloudQuit
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Fixes iOS 16+ CloudKit crashes by returning nil from CKContainer methods.
+Maintainer: NohamR
+Author: NohamR
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)
