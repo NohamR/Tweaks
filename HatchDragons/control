@@ -1,0 +1,9 @@
+Package: xyz.nohamr.hatchdragons
+Name: HatchDragons
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Logs CI.HttpClient requests (PerformGet/PostJson) from the HatchDragons Unity (il2cpp) game to the console.
+Maintainer: NohamR
+Author: NohamR
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)
