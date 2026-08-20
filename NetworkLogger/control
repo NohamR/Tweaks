@@ -1,0 +1,9 @@
+Package: xyz.noham.networklogger
+Name: NetworkLogger
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Logs every network request and response to the console via os_log.
+Maintainer: NohamR
+Author: NohamR
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)
