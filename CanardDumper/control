@@ -1,0 +1,9 @@
+Package: xyz.nohamr.canarddumper
+Name: CanardDumper
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Dumps extracted files from DlyCore DlyArchiveFile::GetFile to Documents/CanardDumps for Le Canard Enchaîné app analysis
+Maintainer: NohamR
+Author: NohamR
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)
