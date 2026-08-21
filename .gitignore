@@ -5,3 +5,6 @@ Build.md
 /App
 /GoodnotesPro
 /StravaPremium
+scripts/build_install_loop.sh
+CanardDumper/Tweak.x.bak
+CanardDumper/Tweak_POC.x
