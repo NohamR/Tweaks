@@ -1,0 +1,9 @@
+Package: xyz.nohamr.bgsessionfix
+Name: BGSessionFix
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Redirects background NSURLSession configs to foreground configs (Simulator dev use)
+Maintainer: NohamR
+Author: NohamR
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)
