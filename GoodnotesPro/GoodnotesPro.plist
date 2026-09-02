@@ -1,0 +1,9 @@
+{
+	Filter = {
+		Bundles = (
+			"com.goodnotesapp.x",
+			"com.goodnotesapp.goodnotes",
+			"com.TimeBase.TimeBase"
+		);
+	};
+}

@@ -21,6 +21,7 @@ iOS tweaks built with [Theos](https://theos.dev), injected into IPAs via [cyan](
 | [RMHook](RMHook/index.md)                          | reMarkable               | iOS         |
 | [HatchDragons](HatchDragons/index.md)              | HatchDragons 1.2.1       | iOS 18+     |
 | [BGSessionFix](BGSessionFix/index.md)              | BGSessionFix             | iOS 15+     |
+| [GoodnotesPro](GoodnotesPro/index.md)              | GoodnotesPro             | iOS 18+     |
 
 ## Build
 

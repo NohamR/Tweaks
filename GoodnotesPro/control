@@ -1,0 +1,9 @@
+Package: xyz.nohamr.goodnotespro
+Name: GoodnotesPro
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Unlocks GoodNotes Pro features (BadNotes port).
+Maintainer: NohamR
+Author: NohamR
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)
